@@ -1,0 +1,14 @@
+# Ignore hidden files
+.*
+
+# Ignore iml files
+*.iml
+
+# Ignore npm generated folders
+/node_modules/
+/lib/
+
+!.gitignore
+!.gitattributes
+!.gitkeep
+!.gitlab-ci.yml
