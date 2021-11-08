@@ -39,6 +39,9 @@
     "Ruben CONDE <ruben.conde@ux-key.com>"
   ],
   "name": "@opentech-ux/lom-compiler-cli",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/opentech-ux/lom-compiler-cli.git"
