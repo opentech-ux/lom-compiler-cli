@@ -39,6 +39,9 @@
     "Ruben CONDE <ruben.conde@ux-key.com>"
   ],
   "name": "@opentech-ux/lom-compiler-cli",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/opentech-ux/lom-compiler-cli.git"
@@ -51,5 +54,5 @@
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts"
   },
   "types": "./lib/index.d.ts",
-  "version": "0.0.0"
+  "version": "1.0.1"
 }
