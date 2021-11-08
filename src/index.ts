@@ -1,30 +1,45 @@
 #!/usr/bin/env node
 
-//import {program} from "commander";
+import { LomCompiler } from "@opentech-ux/lom-compiler";
+import { bold, green, red } from "chalk";
+import clear from "clear";
+import { Command, Option } from "commander";
+import path from "path";
 
-import chalk from "chalk";
-import {program} from "commander";
-import {clear} from "console";
-
-const figlet = require('figlet');
+const program = new Command();
 
 clear();
-console.log(chalk.red(figlet.textSync('pizza-cli', {horizontalLayout: 'full'})));
+
+const sourceOption = new Option(
+  "-s, --source [directory or file]",
+  "Select the file from which create the simulation"
+).default(".", "Gets all JSON files in the current directory");
+
+const outputOption = new Option(
+  "-o, --output [directory name]",
+  "Folder name where to save the compilation result files"
+).default("OpenTech-UX LOM Compiler");
 
 program
-    .version('0.0.1')
-    .description("An example CLI for ordering pizza's")
-    .option('-p, --peppers', 'Add peppers')
-    .option('-P, --pineapple', 'Add pineapple')
-    .option('-b, --bbq', 'Add bbq sauce')
-    .option('-c, --cheese <type>', 'Add the specified type of cheese [marble]')
-    .option('-C, --no-cheese', 'You do not want any cheese')
-    .parse();
+  .version("0.0.0", "-v, --version", "Output the version number")
+  .description("Compiler to generate playable HTML wireframe site from layout description model")
+  .addOption(sourceOption)
+  .addOption(outputOption)
+  .parse();
 
-console.log('you ordered a pizza with:');
-console.log("peppers: ", program.getOptionValue("peppers")); // console.log('  - peppers');
-console.log("pineapple: ", program.getOptionValue("pineapple")); // console.log('  - pineapple');
-console.log("bbq: ", program.getOptionValue("bbq")); // console.log('  - bbq');
-console.log("cheese: ", program.getOptionValue("cheese")); // ? 'marble' : program.getOptionValue("no-cheese") || 'no';
-console.log("no-cheese: ", program.getOptionValue("no-cheese")); // ? 'marble' : program.getOptionValue("no-cheese") || 'no';
-//console.log('  - %s cheese', cheese);
+const options = program.opts();
+
+const main = () => {
+  try {
+    new LomCompiler().source(options.source).outputDir(options.output).compile();
+    console.log(green("Success!"));
+    console.log("Compilation files created at:");
+    console.log(bold(path.join(process.cwd(), options.output)));
+  } catch (error) {
+    console.log(red(bold("ERROR!")));
+    console.log("Compilation failed with the current message:");
+    console.log(error);
+  }
+};
+
+main();
