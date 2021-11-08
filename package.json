@@ -51,5 +51,5 @@
     "start": "nodemon --watch 'src/**/*.ts' --exec 'ts-node' src/index.ts"
   },
   "types": "./lib/index.d.ts",
-  "version": "0.0.0"
+  "version": "1.0.0"
 }
