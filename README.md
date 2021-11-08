@@ -23,10 +23,10 @@ generate a series of HTML files that represent a simulation of the navigation on
 
 ```bash
 # Project installation
-npm install @opentech-ux/lom-compiler
+npm install @opentech-ux/lom-compiler-cli
 
 # Global installation
-npm install -g @opentech-ux/lom-compiler
+npm install -g @opentech-ux/lom-compiler-cli
 ```
 
 ## Options
