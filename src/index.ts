@@ -21,7 +21,7 @@ const outputOption = new Option(
 ).default("OpenTech-UX LOM Compiler");
 
 program
-  .version("0.0.0", "-v, --version", "Output the version number")
+  .version("1.0.0", "-v, --version", "Output the version number")
   .description("Compiler to generate playable HTML wireframe site from layout description model")
   .addOption(sourceOption)
   .addOption(outputOption)
